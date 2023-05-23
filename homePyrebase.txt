@@ -1,0 +1,44 @@
+# Modulos
+import pyrebase
+from datetime import datetime
+import streamlit as st
+
+
+
+# Configuration Key
+# firebaseConfig = {
+#   'apiKey': "AIzaSyCE2P3jfTSCNOswGwzdBB9DTckzIeu8jYk",
+#   authDomain: "treco-7b38f.firebaseapp.com",
+#   projectId: "treco-7b38f",
+#   storageBucket: "treco-7b38f.appspot.com",
+#   messagingSenderId: "691542877577",
+#   appId: "1:691542877577:web:84d07c776e88779d21ed58",
+#   measurementId: "G-FT0BCQ0K6G"
+# };
+
+firebaseConfig = {
+  'apiKey': "AIzaSyCE2P3jfTSCNOswGwzdBB9DTckzIeu8jYk",
+  'authDomain': "treco-7b38f.firebaseapp.com",
+  'projectId': "treco-7b38f",
+  'databaseurl':"https://treco-7b38f-default-rtdb.europe-west1.firebasedatabase.app/",
+  'storageBucket': "treco-7b38f.appspot.com",
+  'messagingSenderId': "691542877577",
+  'appId': "1:691542877577:web:84d07c776e88779d21ed58",
+  'measurementId': "G-FT0BCQ0K6G"
+};
+
+# Firebase Authentication
+firebase = pyrebase.initialize_app(firebaseConfig)
+auth = firebase.auth()
+
+# # Base de Dados
+db = firebase.database()
+storage = firebase.storage()
+st.sidebar.title("TrECO")
+
+#Autenticacao
+selecao = st.sidebar.selectbox('Login/Cadastrar', ['Login', 'Cadastro'])
+email = st.sidebar.text_input('Informe seu email')
+senha = st.sidebar.text_input('Informe a senha', type='password')
+
+
